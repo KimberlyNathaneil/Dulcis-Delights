@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title> Dulcis Delights - Expenses Record </title>
+        <link rel="icon" type="image/x-icon" href="assets/logo.jpg">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="navbar" id="navbar-expenses">
+            <div class="header">
+                <div class="flex-container flex-row">
+                    <a class="header-link" href="home.html">Home</a>
+                    <a class="header-link header-active" href="record.html">Record</a>
+                    <a class="header-link" href="ledger.html">Ledger</a>
+                    <!-- <a class="header-link" href="login.html">
+                        <img class="account-logo" src="assets/account-logo.png">
+                    </a>    -->
+                </div>                                   
+            </div>
+        </div>
+        <div class="record" id="record-expenses">
+            <div class="record-bar flex-container flex-row">
+                <a class="record-text record-text-active" href="record-expenses.html">Expenses</a>
+                <a class="record-text" href="record-income.html">Income</a>
+                <a class="record-text" href="record-inventory.html">Inventory</a>
+            </div>
+        </div>
+        <div class="input" id="input-expenses">
+            <div class="input-content flex-container flex-col">
+                <form action=".php">
+                    <div class="input-box flex-container flex-row">
+                        <input type="text" id="input-date-exp" name="input-date-exp" placeholder="Day, Date" required>
+                        <input type="text" id="input-name-exp" name="input-name-exp" placeholder="Item Name" required>
+                        <input type="number" id="input-qty-exp" name="input-qty-exp" placeholder="Qty" required>
+                        <input type="number" id="input-price-exp" name="input-price-exp" placeholder="Unit Price" required>
+                        <input type="text" id="input-note-exp" name="input-note-exp" placeholder="Note" required>
+                    </div> 
+                    <div class="input-submit flex-container flex-end">
+                        <div class="submit-wrap">
+                            <input type="submit" value="Confirm"></input>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="table" id="table-expenses">
+            <table>
+                <tr>
+                    <th span="1" style="width: 20em;">Day, Date</th>
+                    <th span="1" style="width: 20em;">Item Name</th>
+                    <th span="1" style="width: 5em">Qty</th>
+                    <th span="1" style="width: 20em;">Unit Price</th>
+                    <th span="1" style="width: 20em;">Total Price</th>
+                    <th span="1" style="width: 20em; border-right: 0.2em solid black;">Note</th>
+                </tr>
+                <tr class="table-hidden">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>nn</td>
+                    <td>nn</td>
+                    <td>nn</td>
+                    <td>nn</td>
+                    <td>nn</td>
+                    <td>nn</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    
