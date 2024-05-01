@@ -1,3 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+}
+
 :root{
     --primary: #164863;
     --secondary: #427D9D;
@@ -23,11 +33,11 @@
     --font-9xl: 5em;
 }
 
-html {
+/*html {
     scroll-behavior: smooth;
     list-style: none;
     text-decoration: none;
-}
+} */
 
 body {
     margin: 0;
@@ -39,15 +49,6 @@ p, h1, h2, h3, h4, h5, h6 {
     color: var(--black);
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
 
 /* ------Flex------ */
 
@@ -64,6 +65,11 @@ input[type=number] {
     align-items: center;
 }
 
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
 .flex-row {
     flex-direction: row;
 }
@@ -76,9 +82,6 @@ input[type=number] {
     justify-content: flex-start;
 }
 
-.flex-end {
-    justify-content: flex-end;
-}
 
 .flex-wrap {
     flex-wrap: wrap;
@@ -87,7 +90,8 @@ input[type=number] {
 /* -----Header----- */
 
 .navbar {
-    position: fixed;
+    position: static;
+    z-index: 1;
     top: 0;
     width: 100%;
     background-color: #FFFFFF;
