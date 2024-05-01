@@ -1,3 +1,8 @@
+<?php
+    $conn = mysqli_connect("localhost", "root", "", "dulcis_delights");
+
+    $result = mysqli_query($conn, "SELECT * FROM income");
+?>
 <html>
     <head>
         <meta charset="UTF-8" />
@@ -13,8 +18,8 @@
         <div class="navbar" id="navbar-income">
             <div class="header">
                 <div class="flex-container flex-row">
-                    <a class="header-link" href="home.html">Home</a>
-                    <a class="header-link header-active" href="record.html">Record</a>
+                    <a class="header-link" href="index.php">Home</a>
+                    <a class="header-link header-active" href="record.php">Record</a>
                     <a class="header-link" href="ledger.html">Ledger</a>
                     <!-- <a class="header-link" href="login.html">
                         <img class="account-logo" src="assets/account-logo.png">
@@ -22,26 +27,26 @@
                 </div>                                   
             </div>
         </div>
-        <div class="record" id="record-income">
+        <div class="record" id="record_income">
             <div class="record-bar flex-container flex-row">
-                <a class="record-text" href="record-expenses.html">Expenses</a>
-                <a class="record-text record-text-active" href="record-income.html">Income</a>
-                <a class="record-text" href="record-inventory.html">Inventory</a>
+                <a class="record-text" href="record_expenses.php">Expenses</a>
+                <a class="record-text record-text-active" href="record_income.php">Income</a>
+                <a class="record-text" href="record_inventory.php">Inventory</a>
             </div>
         </div>
-        <div class="input" id="input-income">
+        <div class="input" id="input_income">
             <div class="input-content flex-container flex-col">
-                <form action=".php">
+                <form method="post" action="proses_record_income.php">
                     <div class="input-box flex-container flex-row">
-                        <input type="text" id="input-date-inc" name="input-date-inc" placeholder="Day, Date" required>
-                        <input type="text" id="input-name-inc" name="input-name-inc" placeholder="Customer Name" required>
-                        <input type="number" id="input-method-inc" name="input-method-inc" placeholder="Payment Method" required>
-                        <input type="number" id="input-amount-inc" name="input-amount-inc" placeholder="Amount" required>
-                        <input type="text" id="input-note-inc" name="input-note-inc" placeholder="Note" required>
+                        <input type="text" id="day_date" name="day_date" placeholder="Day, Date" required>
+                        <input type="text" id="customer_name" name="customer_name" placeholder="Customer Name" required>
+                        <input type="text" id="payment_method" name="payment_method" placeholder="Payment Method" required>
+                        <input type="number" id="amount" name="amount" placeholder="Amount" required>
+                        <input type="text" id="note" name="note" placeholder="Note" required>
                     </div> 
                     <div class="input-submit flex-container flex-end">
                         <div class="submit-wrap">
-                            <input type="submit" value="Confirm"></input>
+                            <input type="submit" name="submit_income" value="Confirm"></input>
                         </div>
                     </div>
                 </form>
@@ -63,13 +68,17 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <tr>
-                    <td>nn</td>
-                    <td>nn</td>
-                    <td>nn</td>
-                    <td>nn</td>
-                    <td>nn</td>
-                </tr>
+                <?php $i = 1; ?>
+                <?php while ($row = mysqli_fetch_array($result)) : ?>
+                    <tr>
+                        <td><?= $row['day_date']; ?></td>
+                        <td><?= $row['customer_name']; ?></td>
+                        <td><?= $row['payment_method']; ?></td>
+                        <td><?= $row['amount']; ?></td>
+                        <td><?= $row['note']; ?></td>
+                    </tr>
+                    <?php $i++; ?>
+                <?php endwhile; ?>
             </table>
         </div>
     </body>

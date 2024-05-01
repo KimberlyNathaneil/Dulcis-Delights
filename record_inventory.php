@@ -1,3 +1,8 @@
+<?php
+    $conn = mysqli_connect("localhost", "root", "", "dulcis_delights");
+
+    $result = mysqli_query($conn, "SELECT * FROM inventory");
+?>
 <html>
     <head>
         <meta charset="UTF-8" />
@@ -13,8 +18,8 @@
         <div class="navbar" id="navbar-inventory">
             <div class="header">
                 <div class="flex-container flex-row">
-                    <a class="header-link" href="home.html">Home</a>
-                    <a class="header-link header-active" href="record.html">Record</a>
+                    <a class="header-link" href="index.php">Home</a>
+                    <a class="header-link header-active" href="record.php">Record</a>
                     <a class="header-link" href="ledger.html">Ledger</a>
                     <!-- <a class="header-link" href="login.html">
                         <img class="account-logo" src="assets/account-logo.png">
@@ -22,24 +27,24 @@
                 </div>                                   
             </div>
         </div>
-        <div class="record" id="record-inventory">
+        <div class="record" id="record_inventory">
             <div class="record-bar flex-container flex-row">
-                <a class="record-text" href="record-expenses.html">Expenses</a>
-                <a class="record-text" href="record-income.html">Income</a>
-                <a class="record-text record-text-active" href="record-inventory.html">Inventory</a>
+                <a class="record-text" href="record_expenses.php">Expenses</a>
+                <a class="record-text" href="record_income.php">Income</a>
+                <a class="record-text record-text-active" href="record_inventory.php">Inventory</a>
             </div>
         </div>
-        <div class="input-inv" id="input-inventory">
+        <div class="input-inv" id="input_inventory">
             <div class="input-content flex-container flex-col">
-                <form action=".php">
+                <form action="proses_record_inventory.php" method="post">
                     <div class="input-box flex-container flex-row">
-                        <input type="text" id="input-name-inv" name="input-name-inv" placeholder="Item Name" required>
-                        <input type="number" id="input-price-inv" name="input-price-inv" placeholder="Unit Price" required>
-                        <input type="number" id="input-qty-inv" name="input-qty-inv" placeholder="Qty" required>
+                        <input type="text" id="item_name" name="item_name" placeholder="Item Name" required>
+                        <input type="number" id="unit_price" name="unit_price" placeholder="Unit Price" required>
+                        <input type="number" id="quantity" name="quantity" placeholder="Qty" required>
                     </div> 
                     <div class="input-submit flex-container flex-end">
                         <div class="submit-wrap">
-                            <input type="submit" value="Confirm"></input>
+                            <input type="submit" name="submit_inventory" value="Confirm"></input>
                         </div>
                     </div>
                 </form>
@@ -57,23 +62,27 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <tr>
-                    <td>nn</td>
-                    <td>nn</td>
-                    <td>
-                        <div class="inv-edit-wrap">
-                            <p id="inv-qty-1">nn</p>
-                            <a id="inv-popup-event">
-                                <img class="inv-edit-img" src="assets/edit-logo.png" alt="Edit">
-                            </a>
-                        </div>
-                    </td>
-                </tr>
+                <?php $i = 1; ?>
+                <?php while( $row = mysqli_fetch_array($result)) : ?>
+                    <tr>
+                        <td><?= $row['item_name']; ?> </td>
+                        <td><?= $row['unit_price']; ?></td>
+                        <td>
+                            <div class="inv-edit-wrap">
+                                <p id="inv-qty-1"><?= $row['quantity']; ?></p>
+                                <a id="inv-popup-event">
+                                    <img class="inv-edit-img" src="assets/edit-logo.png" alt="Edit">
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                <?php $i++; ?>
+                <?php endwhile; ?>           
             </table>
             <div class="inv-popup-overlay" id="inv-popup-overlay">
                 <div class="inv-popup" id="inv-popup">
                     <div class="inv-popup-content">
-                        <input type="number" id="inv-popup-num">
+                        <input type="number" id="edit">
                         <button id="inv-popup-btn">Confirm</button>
                     </div>
                 </div>
