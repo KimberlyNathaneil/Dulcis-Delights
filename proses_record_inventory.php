@@ -14,7 +14,7 @@ if( isset($_POST["submit_inventory"]) ) {
     mysqli_query($conn, $query);
 
     // cek apakah data berhasil di tambahkan atau tidak
-    if( mysqli_affected_rows($conn) > 0 ) {
+    if( mysqli_affected_rows($conn) > 1 ) {
         echo "
             <script>
                 alert('Data have been Added!')
