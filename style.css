@@ -163,6 +163,7 @@ body {
   letter-spacing: 1px;
   padding-top: 30px;
   padding-left: 20px;
+  font-size: 30px;
 }
 
 .right_side .subtitle
@@ -172,6 +173,7 @@ body {
   letter-spacing: 1px;
   padding-top: 3px;
   padding-left: 20px;
+  font-size: 15px;
 }
 
 table {
