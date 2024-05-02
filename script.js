@@ -27,6 +27,9 @@ leftMay.addEventListener("click", (event) => {
     JUN.style.display = "none";
     JUL.style.display = "none";
   }
+  else {
+    MAY.style.display = "none";
+  }
 });
 
 leftJun.addEventListener("click", (event) => {
@@ -36,6 +39,9 @@ leftJun.addEventListener("click", (event) => {
     JUN.style.display = "block";
     JUL.style.display = "none";
   }
+  else {
+    JUN.style.display = "none";
+  }
 });
 
 leftJul.addEventListener("click", (event) => {
@@ -44,5 +50,8 @@ leftJul.addEventListener("click", (event) => {
     MAY.style.display = "none";
     JUN.style.display = "none";
     JUL.style.display = "block";
+  }
+  else {
+    JUL.style.display = "none";
   }
 });
