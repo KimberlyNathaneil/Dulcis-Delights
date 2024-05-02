@@ -1,3 +1,10 @@
+<?php
+    $conn = mysqli_connect("localhost", "root", "", "dulcis_delights");
+
+    $result = mysqli_query($conn, "SELECT * FROM expenses");
+
+?>
+
 <html>
     <head>
         <title>Dulcis Delights</title>
@@ -26,27 +33,28 @@
 
         <section class="home" id="home">
         <div style="display: flex; gap: 128px; justify-content: end; margin-right: 4rem;">
-            <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; margin-top: 50px;">
-                <h2>Month Expenses</h2>
-                <h2>XXX.XXX</h2>
+            <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; text-align: center; margin-top: 50px; ">
+                <h2 style="color: white">Month Expenses</h2>
+                <h2 style="color: white"> 16.000 </h2>
             </div>
     
             <div style="background-color: #427D9D; border-radius: 16px; padding: 12px; font-size: 16px; color: white; text-align: center; margin-top: 50px; ">
-                <h2>Month Income</h2>
-                <h2>XXX.XXX</h2>
+                <h2 style="color: white">Month Income</h2>
+                <h2 style="color: white"> 11.000 </h2>
             </div>
         </div>
-
+        <?php $i = 1; ?>
+        <?php while ($row = mysqli_fetch_array($result)) : ?>
             <div style="display: flex; gap: 32px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
                 <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 50px; ">
-                    <h2> Date/Day/Time </h2>
+                    <h2 style="color: white"><?= $row['day_date']; ?> Date/Day/Time </h2>
                 </div>
                 <div style="display: flex; gap: 8rem;">
                     <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 50px; ">
-                        <h2> (+) xxx.xxx </h2>
+                        <h2 style="color: white"> (+) xxx.xxx </h2>
                     </div>
                     <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 50px; margin-right: 5.6rem">
-                        <h2> (-) xxx.xxx </h2>
+                        <h2 style="color: white"> (-) xxx.xxx </h2>
                     </div>
                 </div>
             </div>
@@ -54,30 +62,63 @@
                 <div style="display: flex; gap: 64px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
                     <div style="display: flex; flex: 1; gap: 64px;">
                         <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                            <h2> Item Name</h2>
+                            <h2 style="color: white"> <?= $row['item_name']; ?> Item Name</h2>
                         </div>
                         <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                            <h2> Note </h2>
+                            <h2 style="color: white"> <?= $row['note']; ?> Note </h2>
                         </div>
                     </div>
                     <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; flex: 1; display: flex; justify-content: space-around">
                         <!-- <h2> (-) xxx.xxx </h2> -->
                         <h2></h2>
-                        <h2> (-) xxx.xxx </h2>
+                        <h2 style="color: white"> <?= $row['total price']; ?> (-) xxx.xxx </h2>
+                    </div>
+                </div>
+            </div>
+        <?php $i++; ?>
+        <?php endwhile; ?>
+
+            <div style="display: flex; gap: 32px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
+                <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
+                    <h2 style="color: white"> 1-1-2024 </h2>
+                </div>
+                <div style="display: flex; gap: 8rem;">
+                    <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
+                        <h2 style="color: white"> + 0 </h2>
+                    </div>
+                    <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; margin-right: 5.6rem">
+                        <h2 style="color: white"> - 11.000 </h2>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color: #164863; border-radius: 100px; padding: 20px; margin-top: 20px; margin-left: 2rem; margin-right: 2rem; ">
+                <div style="display: flex; gap: 64px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
+                    <div style="display: flex; flex: 1; gap: 64px;">
+                        <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
+                            <h2> Tepung</h2>                        
+                        </div>
+                        <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
+                            <h2> Pembelian di Alfamart </h2>
+                        </div>
+                    </div>
+                    <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; flex: 1; display: flex; justify-content: space-around">
+                        <!-- <h2> (-) xxx.xxx </h2> -->
+                        <h2></h2>
+                        <h2> - 11.000 </h2>
                     </div>
                 </div>
             </div>
 
             <div style="display: flex; gap: 32px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
                 <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
-                    <h2> Date/Day/Time </h2>
+                    <h2 style="color: white"> 2-1-2024 </h2>
                 </div>
                 <div style="display: flex; gap: 8rem;">
                     <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
-                        <h2> (+) xxx.xxx </h2>
+                        <h2 style="color: white"> + 0 </h2>
                     </div>
                     <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; margin-right: 5.6rem">
-                        <h2> (-) xxx.xxx </h2>
+                        <h2 style="color: white"> - 5.000 </h2>
                     </div>
                 </div>
             </div>
@@ -85,30 +126,30 @@
                 <div style="display: flex; gap: 64px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
                     <div style="display: flex; flex: 1; gap: 64px;">
                         <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                            <h2> Item Name</h2>
+                            <h2> Tepung Maizena</h2>
                         </div>
                         <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                            <h2> Note </h2>
+                            <h2> Pembelian di Alfamart </h2>
                         </div>
                     </div>
                     <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; flex: 1; display: flex; justify-content: space-around">
                         <!-- <h2> (-) xxx.xxx </h2> -->
                         <h2></h2>
-                        <h2> (-) xxx.xxx </h2>
+                        <h2> - 5.000 </h2>
                     </div>
                 </div>
             </div>
 
             <div style="display: flex; gap: 32px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
                 <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
-                    <h2> Date/Day/Time </h2>
+                    <h2 style="color: white"> 3-1-2024 </h2>
                 </div>
                 <div style="display: flex; gap: 8rem;">
                     <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
-                        <h2> (+) xxx.xxx </h2>
+                        <h2 style="color: white"> + 11.000 </h2>
                     </div>
                     <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; margin-right: 5.6rem">
-                        <h2> (-) xxx.xxx </h2>
+                        <h2 style="color: white"> - 0 </h2>
                     </div>
                 </div>
             </div>
@@ -116,45 +157,14 @@
                 <div style="display: flex; gap: 64px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
                     <div style="display: flex; flex: 1; gap: 64px;">
                         <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                            <h2> Item Name</h2>
+                            <h2> Bundling 5 Mochi </h2>
                         </div>
                         <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                            <h2> Note </h2>
+                            <h2> TRF </h2>
                         </div>
                     </div>
                     <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; flex: 1; display: flex; justify-content: space-around">
-                        <!-- <h2> (-) xxx.xxx </h2> -->
-                        <h2></h2>
-                        <h2> (-) xxx.xxx </h2>
-                    </div>
-                </div>
-            </div>
-
-            <div style="display: flex; gap: 32px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
-                <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
-                    <h2> Date/Day/Time </h2>
-                </div>
-                <div style="display: flex; gap: 8rem;">
-                    <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; ">
-                        <h2> (+) xxx.xxx </h2>
-                    </div>
-                    <div style="background-color: #365486; border-radius: 100px; padding: 15px; font-size: 15px; color: white; text-align: center; margin-top: 20px; margin-right: 5.6rem">
-                        <h2> (-) xxx.xxx </h2>
-                    </div>
-                </div>
-            </div>
-            <div style="background-color: #164863; border-radius: 100px; padding: 20px; margin-top: 20px; margin-left: 2rem; margin-right: 2rem; ">
-                <div style="display: flex; gap: 64px; justify-content: end; margin-right: 4rem; justify-content: space-between; margin-left: 4rem;">
-                    <div style="display: flex; flex: 1; gap: 64px;">
-                        <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                            <h2> Item Name</h2>
-                        </div>
-                        <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; ">
-                            <h2> Note </h2>
-                        </div>
-                    </div>
-                    <div style="background-color: #FFF; width: 100%; border-radius: 100px; padding: 15px; font-size: 15px; color: black; text-align: center; margin-top: 0; flex: 1; display: flex; justify-content: space-around">
-                        <h2> (+) xxx.xxx </h2>
+                        <h2> + 11.000 </h2>
                         <h2></h2>
                         <!-- <h2> (-) xxx.xxx </h2> -->
                     </div>
